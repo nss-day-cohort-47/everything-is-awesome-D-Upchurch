@@ -30,6 +30,24 @@ materialElement.addEventListener("change", (event) => {
 }
 })
 
+const legoSearch = document.querySelector("#legoSearchButton")
+
+legoSearch.addEventListener("click", event => {
+	if (event.target.id === "legoSearchButton") {
+		console.log("You clicked on the search button")
+		const legoSearch = document.querySelector("#legoSearch");
+		filterLegosById(legoSearch.value);
+	}
+})
+
+const filterLegosById = (whatFilter) => {
+	const filterArray = useLegos().filter(singleLego => {
+		if (singleLego.LegoId === whatFilter) {
+			return singleLego;
+		}
+	})
+	makeLegoList(filterArray);
+}
 
 const filterMaterials = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
