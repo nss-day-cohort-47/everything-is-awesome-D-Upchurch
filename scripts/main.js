@@ -2,6 +2,7 @@ console.log("hello beautiful")
 import { loadLegos, useLegos } from './legos/LegoData.js'
 import { makeLegoList } from './legos/LegoList.js';
 
+
 const navElement = document.querySelector("nav");
 
 navElement.addEventListener("click", (event) => {
@@ -30,15 +31,24 @@ materialElement.addEventListener("change", (event) => {
 }
 })
 
-const legoSearch = document.querySelector("#legoSearchButton")
+const legoSearchButton = document.querySelector("#legoSearchButton")
 
-legoSearch.addEventListener("click", event => {
+legoSearchButton.addEventListener("click", event => {
 	if (event.target.id === "legoSearchButton") {
 		console.log("You clicked on the search button")
 		const legoSearch = document.querySelector("#legoSearch");
 		filterLegosById(legoSearch.value);
 	}
 })
+const legoSearch = document.querySelector("#legoSearch")
+
+legoSearch.addEventListener("keyup", event => {
+	if (event.keyCode === 13) {
+		filterLegosById(legoSearch.value)
+			}
+		})
+	
+
 
 const filterLegosById = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
@@ -47,7 +57,10 @@ const filterLegosById = (whatFilter) => {
 		}
 	})
 	makeLegoList(filterArray);
-}
+	
+	
+	
+};
 
 const filterMaterials = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
