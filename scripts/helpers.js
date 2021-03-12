@@ -24,3 +24,4 @@ export const invertColor = (hex) => {
 	var zeros = new Array(len).join('0');
 	return (zeros + str).slice(-len);
   }
+
