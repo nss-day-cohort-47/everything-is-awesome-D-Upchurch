@@ -25,3 +25,5 @@ export const invertColor = (hex) => {
 	return (zeros + str).slice(-len);
   }
 
+
+  
